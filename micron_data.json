@@ -1,0 +1,137 @@
+{
+  "metadata": {
+    "target_company": "Micron Technology, Inc.",
+    "exchange": "NASDAQ",
+    "ticker": "MU",
+    "sec_cik": "0000723125",
+    "currency": "USD",
+    "period_description": "최근 약 1개월 (2026-10-01 ~ 2026-11-04)",
+    "benchmark_date": "2026-11-05",
+    "last_trading_day": "2026-11-04",
+    "collected_at": "2026-11-05T20:37:35+09:00",
+    "news_collected_at": "2026-11-05T20:46:30+09:00",
+    "sources": [
+      {
+        "name": "SEC EDGAR Form 10-K / NASDAQ Company Overview",
+        "type": "공시 및 거래소 공식 기업 정보",
+        "description": "기업 개요, CIK 코드(0000723125), 주요 제품군(DRAM, NAND, HBM)"
+      },
+      {
+        "name": "StockAnalysis / Stoculator (Public Historical Market Data)",
+        "type": "공개 주가 이력 데이터",
+        "description": "2026년 10월 1일 ~ 2026년 11월 4일 일별 종가 기록"
+      },
+      {
+        "name": "Micron Technology Official Newsroom / SEC Filings",
+        "type": "기업 공식 보도자료 및 공시",
+        "description": "실적 발표, 뉴욕 메가팹 착공/공정, 인듐 코퍼레이션 공급망 투자, 아이다호 지역사회 투자 등 공식 발표문"
+      }
+    ],
+    "notice": "AI 초안 · 저장 자료 기준 · 실시간 시세 아님"
+  },
+  "company_overview": {
+    "name_kr": "마이크론 테크놀로지",
+    "name_en": "Micron Technology, Inc.",
+    "ticker": "MU",
+    "exchange": "NASDAQ",
+    "headquarters": "미국 아이다호주 보이시 (Boise, Idaho, USA)",
+    "core_business": [
+      {
+        "term": "DRAM (메모리 반도체)",
+        "explanation": "컴퓨터나 스마트폰, 인공지능(AI) 서버가 일할 때 필요한 데이터를 빠르게 꺼내 쓰는 '단기 작업용 책상' 같은 부품입니다."
+      },
+      {
+        "term": "NAND 플래시 및 SSD (저장 장치)",
+        "explanation": "전원이 꺼져도 사진, 동영상, 프로그램 파일이 사라지지 않고 보관되는 '장기 보관용 서랍' 같은 장치입니다."
+      },
+      {
+        "term": "HBM (고대역폭 메모리)",
+        "explanation": "AI 연산에 특화된 고성능 메모리로, 여러 개의 메모리를 쌓아 올려 엄청난 속도로 대량의 데이터를 전달하는 최신 반도체입니다."
+      }
+    ]
+  },
+  "historical_prices": [
+    { "date": "2026-10-01", "close": 1097.39 },
+    { "date": "2026-10-02", "close": 1074.89 },
+    { "date": "2026-10-05", "close": 1063.96 },
+    { "date": "2026-10-06", "close": 1045.56 },
+    { "date": "2026-10-07", "close": 1088.00 },
+    { "date": "2026-10-08", "close": 1035.84 },
+    { "date": "2026-10-09", "close": 1029.00 },
+    { "date": "2026-10-12", "close": 989.04 },
+    { "date": "2026-10-13", "close": 953.19 },
+    { "date": "2026-10-14", "close": 914.13 },
+    { "date": "2026-10-15", "close": 931.24 },
+    { "date": "2026-10-16", "close": 878.84 },
+    { "date": "2026-10-19", "close": 904.90 },
+    { "date": "2026-10-20", "close": 896.07 },
+    { "date": "2026-10-21", "close": 913.67 },
+    { "date": "2026-10-22", "close": 856.49 },
+    { "date": "2026-10-23", "close": 877.55 },
+    { "date": "2026-10-26", "close": 903.70 },
+    { "date": "2026-10-27", "close": 928.76 },
+    { "date": "2026-10-28", "close": 983.23 },
+    { "date": "2026-10-29", "close": 934.27 },
+    { "date": "2026-10-30", "close": 884.74 },
+    { "date": "2026-11-02", "close": 833.59 },
+    { "date": "2026-11-03", "close": 855.10 },
+    { "date": "2026-11-04", "close": 795.23 }
+  ],
+  "articles": [
+    {
+      "id": 1,
+      "title": "Micron Reports Results for the Fourth Quarter and Full Year of Fiscal 2026",
+      "date": "2026-09-30",
+      "media": "Micron Technology Investor Relations (공식 보도자료)",
+      "url": "https://investors.micron.com/news-releases",
+      "read_scope": "본문 읽음",
+      "collected_at": "2026-11-05T20:46:04+09:00",
+      "summary": "마이크론은 2026 회계연도 4분기 매출이 542.3억 달러로 전년 동기 대비 약 379% 증가했다고 발표했습니다. GAAP 순이익은 377억 달러(희석 주당 32.87달러)를 기록했으며, AI 수요 확대로 연간 DRAM 매출이 처음으로 1,000억 달러를 넘어섰습니다.",
+      "key_claims": "인공지능(AI) 인프라 수요가 고성능 메모리 및 HBM 출하량을 견인하고 있으며, 연간 및 분기 실적이 사상 최고치를 경신했다고 명시함."
+    },
+    {
+      "id": 2,
+      "title": "Micron Announces Over $67 Million in New Idaho Community Investments for Transportation, Housing and Children",
+      "date": "2026-10-27",
+      "media": "Micron Technology Newsroom (공식 보도자료)",
+      "url": "https://www.micron.com/about/newsroom",
+      "read_scope": "본문 읽음",
+      "collected_at": "2026-11-05T20:45:56+09:00",
+      "summary": "마이크론은 본사가 위치한 아이다호주 트레저 밸리 지역에 6,700만 달러 이상의 신규 지역사회 투자를 발표했습니다. 어린이 저축 계좌(4,500만 달러 이상), 대중교통 노선 확충(1,160만 달러), 저렴한 주택 공급(1,050만 달러) 등이 포함되어 있습니다.",
+      "key_claims": "보이시 본사 공장 확장에 발맞추어 지역사회 인프라와 상생 투자를 강화하는 2023년 프레임워크의 후속 집행임을 밝힘."
+    },
+    {
+      "id": 3,
+      "title": "Micron Invests in New York Critical Minerals Processing With Indium Corporation",
+      "date": "2026-10-20",
+      "media": "Micron Technology / Indium Corporation 공동 보도자료",
+      "url": "https://www.indium.com/news",
+      "read_scope": "본문 읽음",
+      "collected_at": "2026-11-05T20:46:15+09:00",
+      "summary": "마이크론은 30억 달러 규모의 미국 국내 공급망 육성 계획의 일환으로 인듐 코퍼레이션(Indium Corporation)에 전략적 투자를 단행했습니다. 뉴욕주 롬/클린턴 공장에서 차세대 반도체 제조에 필수적인 핵심 고순도 광물 정제 역량을 확대합니다.",
+      "key_claims": "해외 정제 의존도를 낮추고 미국 내 반도체 필수 원자재의 안정적인 장기 조달망을 확보하기 위한 전략적 투자라고 밝힘."
+    },
+    {
+      "id": 4,
+      "title": "Micron Accelerates New York Megafab Timeline, Celebrates Concrete Pour and Expands U.S. Investment to Over $250 Billion Through 2035",
+      "date": "2026-07-09",
+      "media": "Micron Technology Newsroom (공식 보도자료)",
+      "url": "https://www.micron.com/about/newsroom",
+      "read_scope": "본문 읽음",
+      "collected_at": "2026-11-05T20:46:23+09:00",
+      "summary": "뉴욕주 클레이(Clay)에 건설 중인 초대형 반도체 공장(Megafab)의 첫 콘크리트 타설을 예정보다 한 분기 이상 앞당겨 달성했다고 밝혔습니다. 또한 2035년까지의 미국 내 총 투자 계획을 2,500억 달러 이상으로 확대 조정했습니다.",
+      "key_claims": "향후 4개 팹으로 구성될 뉴욕 제조 단지의 기초 공사가 본격 궤도에 올랐으며 장기 설비투자 규모를 대폭 확대했다고 명시함."
+    },
+    {
+      "id": 5,
+      "title": "Micron to Host Technology Webinar on Oct. 21",
+      "date": "2026-10-19",
+      "media": "Micron Technology Investor Relations (공식 공지)",
+      "url": "https://investors.micron.com/news-releases",
+      "read_scope": "제목·메타정보만 확인",
+      "collected_at": "2026-11-05T20:46:30+09:00",
+      "summary": "제목 및 일정 메타정보만 확인되었습니다. (원문 세부 본문 전체 검독을 거치지 않아 자의적 요약을 배제하며, AI 인프라용 다세대 메모리 로드맵 관련 웨비나 일정으로 파악됨.)",
+      "key_claims": "공식 행사 일정 및 주요 발표 주제 메타정보만 확인되었으며 세부 발언 본문 내용은 확인 필요 상태임."
+    }
+  ]
+}
