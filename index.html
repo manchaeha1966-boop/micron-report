@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>마이크론(MU) 주식 최종 보고서</title>
+  <style>
+    /* 토스 스타일의 밝은 파랑, 부드러운 회색 배경, 둥근 곡률, 산세리프 폰트 */
+    :root {
+      --bg-color: #f2f4f6;          /* 토스 특유의 차분하고 부드러운 연회색 배경 */
+      --card-bg: #ffffff;           /* 순백색 카드 */
+      --text-main: #191f28;         /* 짙은 챠콜 본문 텍스트 */
+      --text-sub: #4e5968;          /* 보조 설명용 중간 텍스트 */
+      --text-muted: #8b95a1;        /* 부가 메타/캡션 텍스트 */
+      --primary: #3182f6;           /* 토스 시그니처 비비드 라이트 블루 */
+      --primary-hover: #1b64da;
+      --primary-light: #e8f3ff;     /* 연한 파랑 배경 칩 */
+      --border-color: #e5e8eb;      /* 은은하고 연한 구분선 */
+      --border-radius-card: 22px;   /* 도톰하고 둥근 카드 모서리 */
+      --border-radius-item: 14px;   /* 칩 및 내부 아이템 곡률 */
+      --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      --card-shadow-hover: 0 8px 28px rgba(0, 0, 0, 0.07);
+      --down-blue: #3182f6;         /* 하락/마이너스 파랑 */
+      --up-red: #f04452;            /* 상승/플러스 레드 */
+      --badge-warn-bg: #fff8e1;
+      --badge-warn-text: #b45309;
+      --fact-accent: #3182f6;
+      --interp-accent: #7048e8;
+      --question-accent: #f59e0b;
+      --scope-read-bg: #e8f5e9;
+      --scope-read-text: #2e7d32;
+      --scope-meta-bg: #f1f5f9;
+      --scope-meta-text: #475569;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Pretendard Variable", Pretendard, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 1.5rem 1rem 3rem 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    /* 상단 액션 바 (인쇄 / 다운로드 바로가기) */
+    .top-action-bar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: -0.25rem;
+    }
+
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #ffffff;
+      color: var(--primary);
+      border: 1px solid rgba(49, 130, 246, 0.3);
+      padding: 0.55rem 1rem;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      transition: all 0.15s ease;
+    }
+
+    .btn-action:hover {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      transform: translateY(-1px);
+    }
+
+    /* 상단 고지 배너 */
+    .alert-banner {
+      background-color: var(--badge-warn-bg);
+      border: 1px solid #fde68a;
+      color: var(--badge-warn-text);
+      padding: 0.9rem 1.25rem;
+      border-radius: var(--border-radius-item);
+      font-weight: 600;
+      font-size: 0.92rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* 토스 스타일 둥근 카드 */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid rgba(229, 232, 235, 0.7);
+      border-radius: var(--border-radius-card);
+      padding: 1.75rem 2rem;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    header.card {
+      background: linear-gradient(180deg, #ffffff 0%, #fafdff 100%);
+      padding: 2.2rem 2rem;
+    }
+
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 0.35rem 0.75rem;
+      border-radius: 20px;
+      margin-bottom: 0.85rem;
+    }
+
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #191f28;
+      letter-spacing: -0.03em;
+      line-height: 1.35;
+      margin-bottom: 0.6rem;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #191f28;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #333d4b;
+      margin-top: 1.2rem;
+      margin-bottom: 0.6rem;
+    }
+
+    p {
+      color: var(--text-sub);
+      margin-bottom: 0.75rem;
+      font-size: 0.98rem;
+    }
+
+    /* 토스 스타일 큰 지표 카드 (Hero Metric) */
+    .hero-stat-card {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius-card);
+      padding: 1.75rem 2rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .hero-stat-label {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .hero-stat-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-stat-price {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: #191f28;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+
+    .hero-stat-change {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--down-blue); /* 약 27.53% 하락 */
+      background: var(--primary-light);
+      padding: 0.3rem 0.75rem;
+      border-radius: 12px;
+    }
+
+    .hero-metrics-subgrid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid #f2f4f6;
+    }
+
+    .submetric-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .submetric-title {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .submetric-value {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #333d4b;
+    }
+
+    /* 3문장 핵심 요약 박스 */
+    .brief-summary-box {
+      background: #f7f9fa;
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius-item);
+      padding: 1.25rem 1.4rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .brief-summary-box strong {
+      display: block;
+      color: var(--primary);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+
+    .brief-summary-box p {
+      margin-bottom: 0.45rem;
+      font-size: 0.95rem;
+      color: #333d4b;
+      line-height: 1.55;
+    }
+
+    .brief-summary-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 사실과 해석 나란히 보는 2열 그리드 */
+    .contrast-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+
+    .contrast-col {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius-item);
+      padding: 1.35rem 1.4rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+
+    .contrast-col.fact {
+      border-top: 4px solid var(--fact-accent);
+      background: #fcfdff;
+    }
+
+    .contrast-col.interp {
+      border-top: 4px solid var(--interp-accent);
+      background: #faf9fe;
+    }
+
+    .col-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.85rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px dashed var(--border-color);
+    }
+
+    .col-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .fact .col-title { color: #1e40af; }
+    .interp .col-title { color: #5b21b6; }
+
+    .tag-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.55rem;
+      border-radius: 6px;
+    }
+
+    .fact .tag-badge { background: #e8f3ff; color: #1b64da; }
+    .interp .tag-badge { background: #f3e8ff; color: #6b21a8; }
+
+    /* 메타데이터 그리드 */
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.85rem;
+      margin-top: 1.25rem;
+      font-size: 0.9rem;
+      background: #f8fafc;
+      padding: 1.15rem 1.35rem;
+      border-radius: var(--border-radius-item);
+      border: 1px solid #eef2f6;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .meta-label {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    .meta-value {
+      font-weight: 600;
+      color: #191f28;
+      word-break: break-all;
+    }
+
+    /* 제품 쉬운 설명 그리드 */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .product-card {
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      padding: 1.25rem;
+      border-radius: var(--border-radius-item);
+      transition: background 0.15s ease;
+    }
+
+    .product-card strong {
+      display: block;
+      color: var(--primary);
+      margin-bottom: 0.45rem;
+      font-size: 1.02rem;
+      font-weight: 700;
+    }
+
+    /* 차트 컨테이너 */
+    .chart-container {
+      position: relative;
+      width: 100%;
+      height: 260px;
+      margin: 1.25rem 0;
+      background: #ffffff;
+    }
+
+    svg.stock-chart {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .chart-table-wrap {
+      max-height: 190px;
+      overflow-y: auto;
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius-item);
+      margin-top: 1rem;
+      font-size: 0.88rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th, td {
+      padding: 0.65rem 0.85rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    th {
+      background: #f8fafc;
+      position: sticky;
+      top: 0;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* 뉴스 및 근거 아이템 */
+    .article-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .article-item {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius-item);
+      padding: 1.25rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+
+    .article-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 0.6rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .article-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #191f28;
+      flex: 1 1 70%;
+      line-height: 1.4;
+    }
+
+    .scope-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.6rem;
+      border-radius: 8px;
+      white-space: nowrap;
+    }
+
+    .scope-tag.read {
+      background-color: var(--scope-read-bg);
+      color: var(--scope-read-text);
+      border: 1px solid #bbf7d0;
+    }
+
+    .scope-tag.meta-only {
+      background-color: var(--scope-meta-bg);
+      color: var(--scope-meta-text);
+      border: 1px solid #cbd5e1;
+    }
+
+    .article-meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    .article-summary-box {
+      background: #f8fafc;
+      border-left: 3.5px solid var(--primary);
+      padding: 0.75rem 0.95rem;
+      border-radius: 0 10px 10px 0;
+      font-size: 0.92rem;
+      color: #333d4b;
+      margin-bottom: 0.5rem;
+    }
+
+    .article-link {
+      font-size: 0.85rem;
+      color: var(--primary);
+      text-decoration: underline;
+      word-break: break-all;
+      font-weight: 500;
+    }
+
+    ul {
+      padding-left: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    li {
+      margin-bottom: 0.45rem;
+      color: #333d4b;
+    }
+
+    /* 검증 상태 안내 박스 */
+    .status-badge {
+      display: inline-block;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    .verified { background: #e8f5e9; color: #2e7d32; }
+    .unverified { background: #ffebee; color: #c62828; }
+
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      padding: 1.5rem 0;
+    }
+
+    /* 모바일 반응형 최적화 */
+    @media (max-width: 680px) {
+      body {
+        padding: 0.75rem 0.5rem 2rem 0.5rem;
+      }
+      .card {
+        padding: 1.25rem 1.15rem;
+        border-radius: 18px;
+      }
+      header.card {
+        padding: 1.5rem 1.15rem;
+      }
+      h1 {
+        font-size: 1.35rem;
+      }
+      .hero-stat-price {
+        font-size: 1.85rem;
+      }
+      .hero-stat-card {
+        padding: 1.25rem;
+        border-radius: 18px;
+      }
+      .hero-metrics-subgrid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+      .contrast-grid {
+        grid-template-columns: 1fr;
+      }
+      .meta-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+      }
+      .article-header {
+        flex-direction: column;
+      }
+      .top-action-bar {
+        justify-content: stretch;
+      }
+      .btn-action {
+        flex: 1;
+        justify-content: center;
+      }
+    }
+
+    /* 인쇄 / PDF 저장 최적화 (A4 1~2쪽 자연스러운 연결 및 잘림 방지) */
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 15mm 12mm 15mm 12mm;
+      }
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+        color: #000000 !important;
+      }
+      .container {
+        max-width: 100% !important;
+        gap: 0.8rem !important;
+      }
+      .top-action-bar, .alert-banner {
+        display: none !important; /* 인쇄 시 조작 버튼 및 안내 배너 생략 */
+      }
+      .card {
+        box-shadow: none !important;
+        border: 1px solid #d1d5db !important;
+        border-radius: 12px !important;
+        padding: 1.1rem 1.25rem !important;
+        page-break-inside: auto; /* 자연스러운 페이지 분할 허용 */
+        break-inside: auto;
+        margin-bottom: 0.8rem !important;
+      }
+      /* 헤더와 핵심 요약은 분리되지 않도록 권장 */
+      header.card, .hero-stat-card, .contrast-col, .product-card, .article-item {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+      .contrast-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 0.8rem !important;
+      }
+      .chart-container {
+        height: 200px !important;
+      }
+      .chart-table-wrap {
+        max-height: none !important;
+        overflow: visible !important;
+      }
+      details {
+        open: open !important;
+      }
+      details > summary {
+        display: none !important; /* 인쇄 시 접힘 토글 버튼 숨김 */
+      }
+      details[open] .chart-table-wrap {
+        display: block !important;
+      }
+      footer {
+        padding: 0.5rem 0 !important;
+        font-size: 0.75rem !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- 상단 액션 바 (독립 파일 열기 및 인쇄/PDF 저장 안내) -->
+  <div class="top-action-bar">
+    <a href="stock-report.html" class="btn-action" title="독립 실행 파일 열기">
+      📄 stock-report.html 열기
+    </a>
+    <button type="button" class="btn-action" onclick="window.print()" title="A4 인쇄 또는 PDF로 저장">
+      🖨️ 인쇄 / PDF로 저장
+    </button>
+  </div>
+
+  <!-- 필수 고지 문구 배너 -->
+  <aside class="alert-banner" role="note">
+    <span>⚠️</span>
+    <span>AI 초안 · 저장 자료 기준 · 실시간 시세 아님</span>
+  </aside>
+
+  <!-- 리포트 헤더 -->
+  <header class="card">
+    <div class="header-badge">NASDAQ : MU</div>
+    <h1>마이크론 테크놀로지(Micron) 초보자를 위한 주식 최종 보고서</h1>
+    <p>본 문서는 초보 투자자가 반도체 기업의 핵심 사실과 시장 해석을 나란히 비교하며 읽을 수 있도록 구성한 최종 정리 보고서입니다.</p>
+
+    <!-- 기준 정보 그리드 -->
+    <div class="meta-grid">
+      <div class="meta-item">
+        <span class="meta-label">공식 회사명</span>
+        <span class="meta-value" id="meta-company">Micron Technology, Inc.</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">상장 거래소 / 종목코드</span>
+        <span class="meta-value" id="meta-ticker">NASDAQ : MU (CIK: 0000723125)</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">통화 단위</span>
+        <span class="meta-value" id="meta-currency">USD ($)</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">조회 기간</span>
+        <span class="meta-value" id="meta-period">2026-10-01 ~ 2026-11-04 (약 1개월)</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">기준일 / 마지막 거래일</span>
+        <span class="meta-value" id="meta-dates">기준일 2026-11-05 / 종가일 2026-11-04</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">시세 및 뉴스 수집 시각</span>
+        <span class="meta-value" id="meta-collected">2026-11-05 20:46:30 (KST 기준)</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- [읽기 순서 1] 핵심 요약 (최전면 배치: 한눈에 들어오는 큰 지표 + 3문장 요약 + 사실과 해석 나란히 보기) -->
+  <section class="card">
+    <h2>1. 핵심 요약 (사실과 AI 해석 나란히 보기)</h2>
+
+    <!-- 토스 느낌의 한눈에 들어오는 큰 지표 (Hero Metric Card) -->
+    <div class="hero-stat-card">
+      <div class="hero-stat-label">마지막 거래일 저장 종가 (2026.11.04 기준)</div>
+      <div class="hero-stat-price-row">
+        <div class="hero-stat-price" id="stat-end">$795.23</div>
+        <div class="hero-stat-change">최근 1개월 -27.53% ($302.16↓)</div>
+      </div>
+      <div class="hero-metrics-subgrid">
+        <div class="submetric-item">
+          <span class="submetric-title">1개월 시작 종가 (10/01)</span>
+          <span class="submetric-value" id="stat-start">$1,097.39</span>
+        </div>
+        <div class="submetric-item">
+          <span class="submetric-title">기간 내 최고 종가 (10/01)</span>
+          <span class="submetric-value" id="stat-high">$1,097.39</span>
+        </div>
+        <div class="submetric-item">
+          <span class="submetric-title">기간 내 최저 종가 (11/04)</span>
+          <span class="submetric-value" id="stat-low">$795.23</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 세 문장 안팎의 압축 요약 -->
+    <div class="brief-summary-box">
+      <strong>📌 세 문장 핵심 요약</strong>
+      <p>① 마이크론은 미국 나스닥 상장사(MU)로 AI 가속기용 고성능 메모리를 공급하며 2026 회계연도 4분기에 분기 최대 매출(542.3억 달러)을 공시했습니다.</p>
+      <p>② 반면 저장된 최근 1개월 종가는 10월 1일 $1,097.39에서 11월 4일 $795.23으로 약 27.5% 하락하는 기간 조정을 보였습니다.</p>
+      <p>③ 이는 좋은 실적 발표가 곧바로 단기 주가 상승을 보장하는 것은 아니며, 반도체 경기 순환과 시장 변수가 함께 작용할 수 있음을 보여줍니다.</p>
+    </div>
+
+    <p style="font-size: 0.9rem; color: var(--text-muted);">초보 독자가 혼란을 겪지 않도록 공시·수치로 확인된 <strong>기록된 사실</strong>과 자료에 기초한 <strong>객관적 AI 해석</strong>을 좌우(모바일은 상하)로 나란히 배치했습니다.</p>
+
+    <!-- 사실 vs 해석 2열 나란히 보기 그리드 -->
+    <div class="contrast-grid">
+      <!-- 좌측: 기록된 사실 -->
+      <div class="contrast-col fact">
+        <div class="col-header">
+          <span class="col-title">기록된 사실 (Fact)</span>
+          <span class="tag-badge">공시 및 수치 확인</span>
+        </div>
+        <ul>
+          <li><strong>기업 식별:</strong> 미국 나스닥 상장 종목코드 MU, 미 증권거래위원회 CIK 0000723125 등록 확인. <a href="https://investors.micron.com/news-releases" target="_blank" rel="noopener noreferrer" class="article-link">[출처: SEC/NASDAQ]</a></li>
+          <li><strong>1개월 종가 기록:</strong> 2026년 10월 1일 $1,097.39로 시작하여 11월 4일 $795.23으로 마감. <a href="micron_data.json" class="article-link">[출처: 저장 데이터]</a></li>
+          <li><strong>실적 공시:</strong> 2026 회계연도 4분기 매출 542.3억 달러(전년 동기 대비 약 379% 증가) 및 연간 DRAM 매출 1,000억 달러 돌파 발표. <a href="https://investors.micron.com/news-releases" target="_blank" rel="noopener noreferrer" class="article-link">[출처: 9/30 실적공시]</a></li>
+          <li><strong>투자 공시:</strong> 미국 내 총 투자 계획을 2,500억 달러로 확대하고 뉴욕 메가팹 공사 진행 중. <a href="https://www.micron.com/about/newsroom" target="_blank" rel="noopener noreferrer" class="article-link">[출처: 7/9 보도자료]</a></li>
+        </ul>
+      </div>
+
+      <!-- 우측: 자료에 근거한 AI 해석 -->
+      <div class="contrast-col interp">
+        <div class="col-header">
+          <span class="col-title">자료에 근거한 AI 해석 (Interpretation)</span>
+          <span class="tag-badge">시장 맥락 이해</span>
+        </div>
+        <ul>
+          <li><strong>호실적 발표와 가격 조정의 공존:</strong> 사상 최대 실적 발표 직후에도 10월 주가가 조정을 거친 것은, 실적이 좋더라도 향후 업황 기대치가 미리 가격에 반영되었거나 전반적인 시장 변동성이 영향을 미쳤을 가능성을 시사합니다. (※ 뉴스가 주가 등락의 유일한 원인이라고 단정할 수 없습니다.)</li>
+          <li><strong>반도체 사이클(경기 순환) 영향:</strong> 메모리 반도체 산업은 고객사의 재고 조정 및 IT 설비투자 계획에 따라 제품 가격과 기업 실적의 등락 폭이 비교적 크게 나타나는 경기 민감형 특성을 가집니다.</li>
+          <li><strong>장기 투자와 자본 지출 부담:</strong> 메가팹 건설 및 원자재 공급망 확보는 장기적 생산 역량을 높이는 과정이지만, 단기적으로는 막대한 설비투자 비용(CAPEX)이 계속 들어가는 사업 구조입니다.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- [읽기 순서 2] 초보자를 위한 회사 소개 -->
+  <section class="card">
+    <h2>2. 마이크론은 어떤 회사인가요?</h2>
+    <p>
+      <strong>마이크론 테크놀로지(Micron Technology, Inc.)</strong>는 1978년 미국 아이다호주 보이시에서 설립된 글로벌 <strong>메모리 반도체</strong> 전문 제조 기업입니다.
+      한국의 삼성전자, SK하이닉스와 함께 전 세계 컴퓨터 메모리 시장을 이끄는 3대 주요 제조사 중 하나입니다.
+    </p>
+
+    <!-- 초보자를 위한 핵심 용어 1문장 풀이 카드 -->
+    <div class="product-grid" id="product-container">
+      <div class="product-card">
+        <strong>1. DRAM (디램)</strong>
+        <p><strong>[용어 풀이]</strong> 컴퓨터나 스마트폰, AI 서버가 켜져 있는 동안 복잡한 계산 작업을 빠르게 처리할 수 있도록 데이터를 잠시 올려두는 '단기 작업용 책상' 같은 반도체 부품입니다.</p>
+      </div>
+      <div class="product-card">
+        <strong>2. NAND 플래시 및 SSD</strong>
+        <p><strong>[용어 풀이]</strong> 전원이 꺼져도 사진, 영상, 문서 파일이 지워지지 않고 보존되는 '장기 보관용 서랍' 역할을 하는 대용량 저장 부품입니다.</p>
+      </div>
+      <div class="product-card">
+        <strong>3. HBM (고대역폭 메모리)</strong>
+        <p><strong>[용어 풀이]</strong> 메모리 여러 개를 수직으로 아파트처럼 높게 쌓아 인공지능(AI) 두뇌(GPU)에 대량의 데이터를 초고속으로 전송하는 최신 고성능 부품입니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- [읽기 순서 3] 최근 1개월 저장 종가 흐름 및 차트 -->
+  <section class="card">
+    <h2>3. 최근 1개월 저장 종가 흐름 (2026.10 ~ 2026.11)</h2>
+    <p class="meta-label">※ 저장된 과거 일별 종가 기록(상대 경로 micron_data.json)을 바탕으로 그린 정적 차트입니다.</p>
+
+    <!-- 순수 인라인 SVG 차트 컨테이너 -->
+    <div class="chart-container">
+      <svg class="stock-chart" id="svg-chart" viewBox="0 0 800 240" preserveAspectRatio="none">
+        <!-- SVG 스크립트로 렌더링 -->
+      </svg>
+    </div>
+
+    <!-- 일별 수치 데이터 테이블 (접이식/스크롤) -->
+    <details open>
+      <summary style="cursor: pointer; font-weight: 600; color: var(--primary);">▼ 일별 종가 데이터 목록 전체 보기 (클릭하여 접기/펼치기)</summary>
+      <div class="chart-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>거래일자 (Date)</th>
+              <th>종가 (USD)</th>
+              <th>전일 대비 변동</th>
+            </tr>
+          </thead>
+          <tbody id="price-table-body">
+            <!-- JavaScript를 통해 채워짐 -->
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </section>
+
+  <!-- [읽기 순서 4] 관련 뉴스 및 공식 근거 (최대 5건) -->
+  <section class="card">
+    <h2>4. 최근 관련 뉴스 및 공식 근거 (최대 5건)</h2>
+    <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">
+      마이크론 공식 보도자료 및 공시 자료 중 실제 수집·저장된 기사 5건입니다. <strong>'본문 읽음'</strong>으로 표시된 항목만 본문 범위 내에서 사실을 요약했으며, 읽지 않은 기사의 자의적 요약 및 가격과의 인과관계 단정은 배제했습니다.
+    </p>
+
+    <div class="article-list" id="article-list-container">
+      <!-- 기사 1 -->
+      <article class="article-item">
+        <div class="article-header">
+          <div class="article-title">1. Micron Reports Results for the Fourth Quarter and Full Year of Fiscal 2026</div>
+          <span class="scope-tag read">본문 읽음</span>
+        </div>
+        <div class="article-meta">
+          <span>📅 날짜: 2026-09-30</span>
+          <span>🏢 매체: Micron Investor Relations (공식 보도자료)</span>
+          <span>⏱️ 수집: 2026-11-05 20:46</span>
+        </div>
+        <div class="article-summary-box">
+          <strong>[본문 요약]</strong> 마이크론은 2026 회계연도 4분기 매출 542.3억 달러(전년 동기 대비 약 379% 증가), GAAP 순이익 377억 달러를 발표했습니다. AI 수요 확대로 연간 전체 DRAM 매출이 사상 처음으로 1,000억 달러를 돌파했다고 밝혔습니다.
+          <br><span style="font-size: 0.85rem; color: #4e5968;">※ 핵심 주장 근거: 인공지능(AI) 인프라용 고성능 메모리 및 HBM 수요 급증에 따른 실적 성장 (<a href="https://investors.micron.com/news-releases" target="_blank" rel="noopener noreferrer" class="article-link">원문 발표 링크</a>)</span>
+        </div>
+      </article>
+
+      <!-- 기사 2 -->
+      <article class="article-item">
+        <div class="article-header">
+          <div class="article-title">2. Micron Announces Over $67 Million in New Idaho Community Investments for Transportation, Housing and Children</div>
+          <span class="scope-tag read">본문 읽음</span>
+        </div>
+        <div class="article-meta">
+          <span>📅 날짜: 2026-10-27</span>
+          <span>🏢 매체: Micron Technology Newsroom (공식 보도자료)</span>
+          <span>⏱️ 수집: 2026-11-05 20:46</span>
+        </div>
+        <div class="article-summary-box">
+          <strong>[본문 요약]</strong> 마이크론은 본사가 위치한 아이다호주 트레저 밸리 지역에 6,700만 달러 이상의 신규 지역사회 투자를 발표했습니다. 어린이 저축 계좌(4,500만 달러 이상), 대중교통 노선 확충(1,160만 달러), 지역 저렴한 주택 공급(1,050만 달러) 등이 배정되었습니다.
+          <br><span style="font-size: 0.85rem; color: #4e5968;">※ 핵심 주장 근거: 본사 반도체 제조 시설 확장에 따른 지역사회 인프라 및 상생 발전 지원 (<a href="https://www.micron.com/about/newsroom" target="_blank" rel="noopener noreferrer" class="article-link">원문 발표 링크</a>)</span>
+        </div>
+      </article>
+
+      <!-- 기사 3 -->
+      <article class="article-item">
+        <div class="article-header">
+          <div class="article-title">3. Micron Invests in New York Critical Minerals Processing With Indium Corporation</div>
+          <span class="scope-tag read">본문 읽음</span>
+        </div>
+        <div class="article-meta">
+          <span>📅 날짜: 2026-10-20</span>
+          <span>🏢 매체: Micron / Indium Corporation 공동 보도자료</span>
+          <span>⏱️ 수집: 2026-11-05 20:46</span>
+        </div>
+        <div class="article-summary-box">
+          <strong>[본문 요약]</strong> 마이크론은 30억 달러 규모의 미국 국내 공급망 육성 계획의 일환으로 인듐 코퍼레이션(Indium Corporation)에 전략 투자를 집행했습니다. 뉴욕주 롬/클린턴 공장에서 반도체 제조에 필수적인 핵심 고순도 광물 정제 및 가공 시설 확장을 추진합니다.
+          <br><span style="font-size: 0.85rem; color: #4e5968;">※ 핵심 주장 근거: 필수 반도체 광물 자원의 해외 정제 의존도 축소 및 미국 내 공급망 안정화 (<a href="https://www.indium.com/news" target="_blank" rel="noopener noreferrer" class="article-link">원문 발표 링크</a>)</span>
+        </div>
+      </article>
+
+      <!-- 기사 4 -->
+      <article class="article-item">
+        <div class="article-header">
+          <div class="article-title">4. Micron Accelerates New York Megafab Timeline, Celebrates Concrete Pour and Expands U.S. Investment to Over $250 Billion Through 2035</div>
+          <span class="scope-tag read">본문 읽음</span>
+        </div>
+        <div class="article-meta">
+          <span>📅 날짜: 2026-07-09</span>
+          <span>🏢 매체: Micron Technology Newsroom (공식 보도자료)</span>
+          <span>⏱️ 수집: 2026-11-05 20:46</span>
+        </div>
+        <div class="article-summary-box">
+          <strong>[본문 요약]</strong> 뉴욕주 클레이(Clay)에 건설 중인 초대형 반도체 공장(Megafab)의 첫 콘크리트 타설을 예정보다 한 분기 이상 앞당겨 달성했다고 밝혔으며, 2035년까지의 미국 내 총 투자 계획을 2,500억 달러 이상으로 확대 조정했습니다.
+          <br><span style="font-size: 0.85rem; color: #4e5968;">※ 핵심 주장 근거: 총 4개 팹으로 구성될 첨단 메모리 단지 구축 가속화 (<a href="https://www.micron.com/about/newsroom" target="_blank" rel="noopener noreferrer" class="article-link">원문 발표 링크</a>)</span>
+        </div>
+      </article>
+
+      <!-- 기사 5 -->
+      <article class="article-item">
+        <div class="article-header">
+          <div class="article-title">5. Micron to Host Technology Webinar on Oct. 21</div>
+          <span class="scope-tag meta-only">제목·메타정보만 확인</span>
+        </div>
+        <div class="article-meta">
+          <span>📅 날짜: 2026-10-19</span>
+          <span>🏢 매체: Micron Technology Investor Relations (공식 공지)</span>
+          <span>⏱️ 수집: 2026-11-05 20:46</span>
+        </div>
+        <div class="article-summary-box" style="border-left-color: #94a3b8; background: #f1f5f9;">
+          <strong>[확인 범위 안내]</strong> 공식 발표 제목 및 일정 메타정보만 확인되었습니다. 세부 강연 본문 녹취록은 직접 검독을 거치지 않았으므로 내용 왜곡을 방지하기 위해 본문 요약을 배제하며 '확인 필요' 상태로 남겨둡니다.
+          <br><span style="font-size: 0.85rem; color: #4e5968;">※ 출처 링크: <a href="https://investors.micron.com/news-releases" target="_blank" rel="noopener noreferrer" class="article-link">공식 IR 공지 링크</a></span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- [읽기 순서 5] 더 확인할 것 (남은 질문 및 출처·검증 내역) -->
+  <section class="card">
+    <h2>5. 더 확인할 것 (남은 질문과 검증 내역)</h2>
+
+    <!-- 남은 질문 박스 -->
+    <div style="background: #fffbeb; border: 1px solid #fde68a; border-left: 4px solid var(--question-accent); padding: 1.15rem 1.35rem; border-radius: 0 var(--border-radius-item) var(--border-radius-item) 0; margin-bottom: 1.25rem;">
+      <strong style="color: #92400e; font-size: 1rem; display: block; margin-bottom: 0.5rem;">❓ 독자가 스스로 더 확인해 볼 핵심 질문</strong>
+      <ul>
+        <li>사상 최고 실적 달성 이후, 향후 분기(2027 회계연도 1분기 등)의 수익성 가이던스는 시장 예상치에 부합하고 있는가?</li>
+        <li>AI 가속기용 핵심 제품인 차세대 HBM(HBM3E, HBM4)의 주요 빅테크 고객사 공급 계약 일정과 실제 수율에 차질은 없는가?</li>
+        <li>본문 미확인 상태인 기술 웨비나(10/21)에서 경영진이 제시한 차세대 메모리 기술 로드맵의 구체적 상용화 시기는 언제인가?</li>
+      </ul>
+    </div>
+
+    <h3>데이터 출처 (Source)</h3>
+    <ul>
+      <li><strong>기업 식별 및 개요:</strong> 미국 SEC EDGAR Form 10-K 연례보고서 및 NASDAQ 상장사 프로필 (CIK: 0000723125)</li>
+      <li><strong>일별 종가 데이터:</strong> StockAnalysis 및 Stoculator 공개 시장 기록 (2026년 10월 1일 ~ 11월 4일 거래일 기준)</li>
+      <li><strong>공식 보도자료 및 공시:</strong> Micron Technology Investor Relations 및 공식 뉴스룸 발표문</li>
+    </ul>
+
+    <h3 style="margin-top: 1.2rem;">검증 완료 vs 미검증 상태 구분</h3>
+    <ul>
+      <li><span class="status-badge verified">검증 완료</span> <strong>상장 정보:</strong> 마이크론의 미국 나스닥 상장 종목코드(MU) 및 메모리 주력 사업 범위 일치 확인.</li>
+      <li><span class="status-badge verified">검증 완료</span> <strong>저장 데이터 기반 검증:</strong> 저장 파일(<code>micron_data.json</code>)과 차트 및 표의 일별 종가 수치 일치 확인.</li>
+      <li><span class="status-badge verified">검증 완료</span> <strong>본문 검독 기사 4건:</strong> 실적 발표(9/30), 아이다호 투자(10/27), 인듐 공급망 투자(10/20), 뉴욕 메가팹 공정(7/9) 원문 본문 검독 및 요약 완료.</li>
+      <li><span class="status-badge unverified">미검증 상태</span> <strong>제목·메타만 확인 기사 1건:</strong> 10월 19일 공지된 기술 웨비나는 본문 녹취록을 열람하지 않아 자의적 해석을 배제하고 '확인 필요' 상태 유지.</li>
+      <li><span class="status-badge unverified">미검증 상태</span> <strong>실시간 시세 미반영:</strong> 본 보고서는 2026년 11월 4일 마감 종가까지만 수집·저장된 정적 자료이며, 현재 시각의 실시간 호가 및 체결가는 반영되지 않았습니다.</li>
+      <li><span class="status-badge unverified">미검증 상태</span> <strong>인과관계 미단정:</strong> 뉴스와 주가 등락 사이의 단정적 인과관계는 검증할 수 없으므로 추측성 연결을 일체 작성하지 않았습니다.</li>
+    </ul>
+
+    <div style="background: #f8fafc; border: 1px solid var(--border-color); padding: 1rem 1.25rem; border-radius: var(--border-radius-item); margin-top: 1.25rem; font-size: 0.88rem; color: #4e5968;">
+      <strong>※ 고지:</strong> 본 문서는 특정 종목에 대한 매수·매도 추천이나 목표주가, 수익을 보장하지 않는 교육·분석 목적의 AI 작성 초안입니다.
+    </div>
+  </section>
+
+  <footer>
+    <p>저장 위치: <code>index.html</code> 및 독립본 <code>stock-report.html</code> | 데이터 파일: <code>micron_data.json</code></p>
+  </footer>
+
+</div>
+
+<script>
+  // 로컬 저장된 데이터 파일(micron_data.json)을 비동기 로드하거나 내장 데이터를 사용해 렌더링
+  async function loadReportData() {
+    let data = null;
+    try {
+      const response = await fetch('micron_data.json');
+      if (response.ok) {
+        data = await response.json();
+      }
+    } catch (e) {
+      console.warn("로컬 json fetch 제한(file:// 프로토콜 등) 대비 내장 기본 데이터를 활용합니다.");
+    }
+
+    // fallback 데이터 (동일 규격 보존)
+    if (!data) {
+      data = {
+        "historical_prices": [
+          { "date": "2026-10-01", "close": 1097.39 },
+          { "date": "2026-10-02", "close": 1074.89 },
+          { "date": "2026-10-05", "close": 1063.96 },
+          { "date": "2026-10-06", "close": 1045.56 },
+          { "date": "2026-10-07", "close": 1088.00 },
+          { "date": "2026-10-08", "close": 1035.84 },
+          { "date": "2026-10-09", "close": 1029.00 },
+          { "date": "2026-10-12", "close": 989.04 },
+          { "date": "2026-10-13", "close": 953.19 },
+          { "date": "2026-10-14", "close": 914.13 },
+          { "date": "2026-10-15", "close": 931.24 },
+          { "date": "2026-10-16", "close": 878.84 },
+          { "date": "2026-10-19", "close": 904.90 },
+          { "date": "2026-10-20", "close": 896.07 },
+          { "date": "2026-10-21", "close": 913.67 },
+          { "date": "2026-10-22", "close": 856.49 },
+          { "date": "2026-10-23", "close": 877.55 },
+          { "date": "2026-10-26", "close": 903.70 },
+          { "date": "2026-10-27", "close": 928.76 },
+          { "date": "2026-10-28", "close": 983.23 },
+          { "date": "2026-10-29", "close": 934.27 },
+          { "date": "2026-10-30", "close": 884.74 },
+          { "date": "2026-11-02", "close": 833.59 },
+          { "date": "2026-11-03", "close": 855.10 },
+          { "date": "2026-11-04", "close": 795.23 }
+        ]
+      };
+    }
+
+    renderChartAndTable(data.historical_prices);
+  }
+
+  function renderChartAndTable(prices) {
+    if (!prices || prices.length === 0) return;
+
+    // 통계 계산
+    const closes = prices.map(p => p.close);
+    const minPrice = Math.min(...closes);
+    const maxPrice = Math.max(...closes);
+    const firstPrice = closes[0];
+    const lastPrice = closes[closes.length - 1];
+
+    document.getElementById('stat-start').textContent = `$${firstPrice.toFixed(2)}`;
+    document.getElementById('stat-end').textContent = `$${lastPrice.toFixed(2)}`;
+    document.getElementById('stat-high').textContent = `$${maxPrice.toFixed(2)}`;
+    document.getElementById('stat-low').textContent = `$${minPrice.toFixed(2)}`;
+
+    // 표 렌더링
+    const tbody = document.getElementById('price-table-body');
+    tbody.innerHTML = '';
+    prices.forEach((p, idx) => {
+      const tr = document.createElement('tr');
+      let diffHtml = '-';
+      if (idx > 0) {
+        const prev = prices[idx - 1].close;
+        const diff = p.close - prev;
+        const pct = (diff / prev) * 100;
+        const color = diff >= 0 ? '#f04452' : '#3182f6';
+        const sign = diff >= 0 ? '+' : '';
+        diffHtml = `<span style="color:${color}; font-weight:700;">${sign}${diff.toFixed(2)} (${sign}${pct.toFixed(2)}%)</span>`;
+      }
+      tr.innerHTML = `
+        <td>${p.date}</td>
+        <td><strong>$${p.close.toFixed(2)}</strong></td>
+        <td>${diffHtml}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+
+    // SVG 차트 그리기 (반응형 800 x 240 좌표계)
+    const svg = document.getElementById('svg-chart');
+    const width = 800;
+    const height = 240;
+    const paddingX = 50;
+    const paddingY = 30;
+
+    const plotWidth = width - paddingX * 2;
+    const plotHeight = height - paddingY * 2;
+
+    const yRange = maxPrice - minPrice || 1;
+    const points = prices.map((p, i) => {
+      const x = paddingX + (i / (prices.length - 1)) * plotWidth;
+      const y = height - paddingY - ((p.close - minPrice) / yRange) * plotHeight;
+      return { x, y, date: p.date, close: p.close };
+    });
+
+    // 배경 그리드 라인 (연한 실선/점선)
+    let svgInner = '';
+    const gridLines = 4;
+    for (let i = 0; i <= gridLines; i++) {
+      const gy = paddingY + (i / gridLines) * plotHeight;
+      const val = maxPrice - (i / gridLines) * yRange;
+      svgInner += `<line x1="${paddingX}" y1="${gy}" x2="${width - paddingX}" y2="${gy}" stroke="#edf0f4" stroke-dasharray="3" />`;
+      svgInner += `<text x="${paddingX - 10}" y="${gy + 4}" font-size="11" font-weight="500" fill="#8b95a1" text-anchor="end">$${val.toFixed(0)}</text>`;
+    }
+
+    // 영역 채우기 (토스 시그니처 블루 부드러운 그라데이션)
+    const pathD = points.map((pt, i) => (i === 0 ? `M ${pt.x} ${pt.y}` : `L ${pt.x} ${pt.y}`)).join(' ');
+    const areaD = `${pathD} L ${points[points.length - 1].x} ${height - paddingY} L ${points[0].x} ${height - paddingY} Z`;
+
+    svgInner += `
+      <defs>
+        <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#3182f6" stop-opacity="0.22"/>
+          <stop offset="100%" stop-color="#3182f6" stop-opacity="0.0"/>
+        </linearGradient>
+      </defs>
+      <path d="${areaD}" fill="url(#areaGrad)" />
+      <path d="${pathD}" fill="none" stroke="#3182f6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    `;
+
+    // 주요 데이터 포인트 점 찍기
+    points.forEach((pt, i) => {
+      if (i === 0 || i === points.length - 1 || pt.close === maxPrice || pt.close === minPrice || i % 6 === 0) {
+        svgInner += `
+          <circle cx="${pt.x}" cy="${pt.y}" r="4.5" fill="#3182f6" stroke="#ffffff" stroke-width="2.5" />
+          <text x="${pt.x}" y="${height - paddingY + 18}" font-size="10.5" font-weight="600" fill="#8b95a1" text-anchor="middle">${pt.date.slice(5)}</text>
+        `;
+      }
+    });
+
+    svg.innerHTML = svgInner;
+  }
+
+  // 실행
+  window.addEventListener('DOMContentLoaded', loadReportData);
+</script>
+
+</body>
+</html>
